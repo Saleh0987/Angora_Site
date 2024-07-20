@@ -1,0 +1,740 @@
+// shared variables
+$white: #fff;
+$black: #000;
+$black90: #0000008a;
+$gray: #999;
+$mainColor: #f25454;
+$mainColor90: #f25454e6;
+$secBg: #fafafa;
+
+:root {
+  --white: #{$white};
+  --black: #{$black};
+  --black90: #{$black90};
+  --gray: #{$gray};
+  --mainColor: #{$mainColor};
+  --mainColor90: #{$mainColor90};
+  --secBg: #{$secBg};
+}
+
+::selection {
+  background-color: var(--mainColor);
+  color: #000;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--mainColor);
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.Allloader{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(224 224 224 / 80%);
+  backdrop-filter: blur(15px);
+  .loader{
+    width: 100px;
+    height: 100px;
+    border: 15px solid $secBg;
+    border-radius: 50%;
+    border-bottom-color: $mainColor;
+    animation: loop 0.5s linear infinite;
+  }
+}
+@keyframes loop {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  background-color: var(--white) !important;
+  color: var(--black) !important;
+  font-family: "Open Sans", "Poppins";
+  font-size: 14px;
+  max-height: 100vh;
+  overflow: hidden;
+}
+a{
+  color: var(--mainColor);
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins";
+  color: var(--black90);
+}
+.secBanner {
+  cursor: default;
+  user-select: none;
+  width: 100%;
+  text-align: center;
+  margin: 0.5rem 0;
+  &:hover p::after {
+    width: 5rem;
+  }
+  .backH2 {
+    position: relative;
+    text-transform: uppercase;
+    font-size: calc(1rem + 5vw);
+    font-weight: 500;
+    color: #aaaaaa75;
+    user-select: none;
+    @media (max-width: 567px) {
+      font-size: calc(4rem + 5vw);
+    }
+  }
+  p {
+    color: var(--black);
+    position: absolute;
+    margin-bottom: 2rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: calc(1.5rem + 1vw);
+    font-weight: 900;
+    width: 100%;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -1rem;
+      width: 3rem;
+      height: 1px;
+      background-color: var(--black);
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: 0.5s;
+    }
+  }
+}
+.secBanner + .textInSpan span {
+  padding: 0 10rem;
+  @media (max-width: 991px) {
+    padding: 0;
+  }
+}
+@media (max-width: 200px) {
+  * {
+    font-size: 0.7rem;
+  }
+}
+section,
+footer {
+  padding-block: 3rem;
+}
+// floatDiv div
+.floatDiv {
+  position: fixed;
+  left: -17rem;
+  top: 15%;
+  width: 17rem;
+  background: var(--white);
+  z-index: 3;
+  transition: 1s;
+  button {
+    position: absolute;
+    background-color: var(--black90);
+    right: 0;
+    top: 0;
+    color: var(--white);
+    padding: 10px;
+    transform: translateX(100%);
+  }
+  .lastP {
+    border-bottom: 1px solid #b4b4b4;
+  }
+  .allcolors,
+  .mode {
+    display: flex;
+    margin: 0.5rem 0;
+    span {
+      display: block;
+      width: 25px;
+      height: 25px;
+      margin-right: 0.2rem;
+      cursor: pointer;
+    }
+    .red {
+      background-color: $mainColor;
+    }
+    .Blue {
+      background-color: #4e9cb5;
+    }
+    .green {
+      background-color: #24bca4;
+    }
+    .info {
+      background-color: #46cad7;
+    }
+    .Purple {
+      background-color: #c86f98;
+    }
+    .orange {
+      background-color: #ee8f67;
+    }
+    .yellow {
+      background-color: #e4d20c;
+    }
+    .gray {
+      background-color: #6b798f;
+    }
+    .light {
+      background-color: #fff;
+      border: 2px solid #000;
+    }
+    .dark {
+      background-color: #000;
+      border: 2px solid #000;
+    }
+  }
+}
+.showDiv {
+  left: 0;
+}
+// nav sec
+#nav {
+  position: fixed;
+  width: 100%;
+  z-index: 9;
+  padding: 1rem 0;
+  background: transparent;
+  transition: all 1s;
+  .navbar-brand {
+    color: var(--mainColor);
+    font-weight: 900;
+    letter-spacing: 0.1rem;
+    img {
+      mix-blend-mode: difference;
+    }
+  }
+  .navbar-toggler {
+    position: relative;
+    border: none;
+    &[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+    &[aria-expanded="true"] span:first-child,
+    &[aria-expanded="true"] span:last-child {
+      top: 6px;
+      background-color: var(--white);
+    }
+    &[aria-expanded="true"] span:first-child {
+      transform: rotate(45deg);
+    }
+    &[aria-expanded="true"] span:last-child {
+      transform: rotate(-45deg);
+    }
+    span {
+      background-color: var(--white);
+      height: 2px;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      transition: all 0.3s ease;
+      &:first-child {
+        top: 0;
+      }
+      &:nth-child(2) {
+        top: 6px;
+      }
+      &:last-child {
+        top: 12px;
+      }
+    }
+  }
+  .navbar-collapse {
+    ul {
+      @media (max-width: 991px) {
+        align-items: center;
+      }
+      .active a,
+      li:hover a {
+        opacity: 1;
+        color: var(--mainColor);
+      }
+      li {
+        width: fit-content;
+        a,
+        svg {
+          color: var(--white);
+          opacity: 0.8;
+          transition: 0.5s;
+          font-size: 0.9rem;
+          cursor: pointer;
+          &:hover {
+            color: var(--mainColor);
+          }
+        }
+      }
+    }
+  }
+  button {
+    &:focus {
+      box-shadow: none;
+      outline: none;
+    }
+    i {
+      color: var(--mainColor);
+    }
+  }
+  .navbar-toggler {
+    border: none;
+  }
+}
+#nav.shownav {
+  position: fixed;
+  width: 100%;
+  background: var(--white);
+  box-shadow: 0 5px 30px #0000002b;
+  .navbar-brand {
+    color: var(--mainColor);
+  }
+  .navbar-toggler {
+    &[aria-expanded="true"] span:first-child,
+    &[aria-expanded="true"] span:last-child {
+      background-color: var(--black);
+    }
+    span {
+      background-color: var(--black);
+    }
+  }
+  .navbar-collapse {
+    ul {
+      .active a,
+      li:hover a {
+        color: var(--mainColor);
+      }
+      li {
+        &.active::after {
+          background-color: var(--mainColor);
+        }
+        a,
+        svg {
+          color: var(--black);
+          &:hover {
+            color: var(--mainColor);
+          }
+        }
+      }
+    }
+  }
+}
+// Home sec
+#Home {
+  height: 100vh;
+  padding: 0;
+  .carousel {
+    .carousel-inner {
+      .carousel-item {
+        img {
+          width: 100%;
+          height: 100vh;
+          @media (max-width: 767px) {
+            width: auto;
+          }
+        }
+        .text {
+          h2 {
+            color: #fff;
+            position: relative;
+            transition: 1s;
+            font-size: 4.5rem;
+            left: 0;
+            @media (max-width: 767px) {
+              font-size: 2.5rem;
+            }
+          }
+        }
+      }
+      .carousel-item:not(.active) {
+        .text {
+          h2 {
+            left: 100%;
+          }
+        }
+      }
+    }
+    .allBtns {
+      button {
+        &:hover::after {
+          left: 0;
+        }
+        &:hover svg {
+          color: var(--mainColor);
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          left: -100%;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          background-color: var(--white);
+          transition: 0.5s;
+        }
+        height: 3rem;
+        width: 3rem;
+        opacity: 1;
+        overflow: hidden;
+        @media (max-width: 576px) {
+          height: 2.5rem;
+          width: 2.5rem;
+        }
+        svg {
+          color: var(--white);
+          transition: 0.5s;
+        }
+      }
+      .carousel-control-prev {
+        top: calc(50% - 3rem);
+      }
+      .carousel-control-next {
+        top: calc(50%);
+      }
+      @media (max-width: 576px) {
+        .carousel-control-prev {
+          top: calc(50% - 2.5rem);
+        }
+      }
+    }
+  }
+  .scroll {
+    height: 50px;
+    width: 30px;
+    border: 2px solid #fff;
+    cursor: pointer;
+    z-index: 1;
+    .scrollX {
+      width: 10px;
+      height: 10px;
+      animation: scroll 1.2s infinite linear;
+    }
+    @keyframes scroll {
+      0% {
+        top: 0;
+        opacity: 0.2;
+      }
+      100% {
+        top: calc(100% - 16px);
+        opacity: 1;
+      }
+    }
+  }
+}
+// About sec
+#About {
+  .container {
+    .row {
+      .Allprogress {
+        label {
+          opacity: 0;
+          transition: 0.5s;
+        }
+        .progress {
+          height: 0.3rem;
+          .progress-bar {
+            background-color: var(--mainColor);
+            width: 0;
+          }
+        }
+      }
+    }
+  }
+}
+// Team sec
+#Team {
+  .card {
+    @media (max-width: 767px) {
+      align-items: center;
+    }
+  }
+  .card {
+    background-color: var(--white);
+    .img {
+      width: fit-content;
+      img {
+        transition: 0.5s;
+      }
+    }
+  }
+  .allCard:hover .card .img img{
+    transform: scale(1.1);
+  }
+  .allCard:hover .overlay {
+    opacity: 1;
+  }
+  .overlay {
+    background: var(--mainColor90);
+    opacity: 0;
+    transition: 0.5s;
+    svg {
+      color: var(--white);
+      font-size: 1.1rem;
+    }
+  }
+}
+// Projects sec
+#Projects {
+  .container {
+    @media (max-width: 767px) {
+      flex-direction: column;
+      align-items: center;
+      button {
+        width: fit-content;
+      }
+    }
+  }
+  button {
+    background-color: var(--mainColor);
+    transition: 0.5s;
+    border: 2px solid var(--mainColor90);
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+// Services sec
+#Services {
+  background: var(--secBg);
+  .cardX {
+    h5 {
+      transition: 0.5s;
+    }
+  }
+  .cardX:hover h5 {
+    color: var(--mainColor);
+    transition: 0.5s;
+  }
+  svg {
+    color: var(--mainColor);
+  }
+}
+// Blog sec
+#Blog {
+  .container {
+    .swiper {
+      .swiper-wrapper {
+        .swiper-slide {
+          .card {
+            background-color: var(--white);
+            padding: 7rem 10rem;
+            @media (max-width: 767px) {
+              padding: 5rem 2rem;
+            }
+            border: none;
+            text-align: center;
+            h3 {
+              font-size: 1rem;
+            }
+            span {
+              margin-bottom: 2rem;
+            }
+            p {
+              font-size: 2rem;
+              font-weight: 600;
+              line-height: 2.5rem;
+              position: relative;
+            }
+          }
+        }
+      }
+      .swiper-pagination {
+        top: 0;
+        bottom: unset;
+        img {
+          width: 70px;
+          height: 70px;
+          @media (max-width: 767px) {
+            width: 40px;
+            height: 40px;
+          }
+        }
+      }
+      img.swiper-pagination-bullet.swiper-pagination-bullet-active {
+        width: 90px;
+        height: 90px;
+        @media (max-width: 767px) {
+          width: 60px;
+          height: 60px;
+        }
+      }
+    }
+  }
+}
+// Contact sec
+#Contact {
+  background: var(--secBg);
+  .container {
+    .row {
+      .left {
+        h3 {
+          font-size: 2rem;
+          @media (max-width: 567px) {
+            font-size: 1.5rem;
+          }
+          @media (max-width: 279px) {
+            font-size: 1rem;
+          }
+        }
+        .informations {
+          .information {
+            &:hover .text h4 {
+              color: var(--mainColor);
+            }
+            svg {
+              color: var(--mainColor);
+            }
+            .text {
+              h4 {
+                transition: 0.5s;
+              }
+              .email {
+                transition: 0.5s;
+                cursor: pointer;
+                &:hover {
+                  color: var(--mainColor);
+                }
+              }
+            }
+          }
+        }
+      }
+      .right {
+        div {
+          input::placeholder,
+          textarea::placeholder {
+            color: #b4b4b4;
+          }
+          input,
+          textarea {
+            background: transparent;
+            &:focus {
+              border: 2px solid var(--mainColor);
+              box-shadow: none;
+            }
+          }
+          button {
+            background-color: var(--mainColor);
+            border: 2px solid var(--mainColor);
+            transition: 0.5s;
+            &:hover {
+              opacity: 0.8;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// footer sec
+#footer {
+  background: #222;
+  background-size: contain;
+  background-image: url("../img/dotted-map.png");
+  h5 {
+    color: #fff;
+  }
+  .container {
+    .row {
+      .email {
+        transition: 0.5s;
+        &:hover {
+          color: var(--mainColor);
+          cursor: pointer;
+        }
+      }
+      p {
+        color: #b4b4b4;
+      }
+      ul {
+        li {
+          color: #b4b4b4;
+          cursor: pointer;
+          transition: 0.5s;
+          &:hover {
+            color: var(--mainColor);
+          }
+        }
+      }
+      .allBadge {
+        div {
+          transition: 0.5s;
+          p {
+            color: #b4b4b4;
+            border: 1px solid #b4b4b4;
+            transition: 0.5s;
+            cursor: pointer;
+            &:hover {
+              color: var(--mainColor);
+              border-color: var(--mainColor);
+            }
+          }
+        }
+      }
+    }
+  }
+  .centerIcon {
+    background: var(--mainColor);
+    opacity: 0.7;
+    width: 50px;
+    height: 50px;
+    transition: 0.5s;
+    &:hover {
+      opacity: 1;
+    }
+    svg {
+      color: var(--white);
+    }
+  }
+}
+// footerTwo sec
+#footerTwo {
+  background: #1a1a1a;
+  color: $white;
+  @media (max-width: 567px) {
+    flex-direction: column;
+    align-items: center;
+  }
+  .icons {
+    svg {
+      transition: 0.5s;
+      font-size: 1.2rem;
+      color: $white;
+      &:hover {
+        color: var(--mainColor);
+        cursor: pointer;
+      }
+    }
+  }
+  .text {
+    p {
+      color: #b4b4b4;
+      span {
+        color: $white;
+        transition: 0.5s;
+        &:hover {
+          color: var(--mainColor);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
